@@ -640,6 +640,9 @@ LOCAL_SHARED_LIBRARIES := \
     libshill-client \
     libbrillo-dbus \
     libchrome-dbus
+ifdef BRILLO
+LOCAL_MODULE_TAGS := eng
+endif
 LOCAL_C_INCLUDES := $(shill_c_includes)
 LOCAL_SRC_FILES := setup_wifi/main.cc
 $(eval $(shill_cpp_common))
