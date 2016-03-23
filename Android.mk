@@ -79,10 +79,12 @@ shill_cpp_flags := \
 include $(CLEAR_VARS)
 LOCAL_MODULE := libshill-net
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_CPPFLAGS := $(shill_cpp_flags)
+LOCAL_CPPFLAGS := $(shill_cpp_flags) -Wno-sign-compare
 LOCAL_SHARED_LIBRARIES := $(shill_shared_libraries)
 LOCAL_C_INCLUDES := $(shill_c_includes)
 LOCAL_SRC_FILES := \
+    net/arp_client.cc \
+    net/arp_packet.cc \
     net/attribute_list.cc \
     net/byte_string.cc \
     net/control_netlink_attribute.cc \
@@ -185,8 +187,6 @@ LOCAL_SRC_FILES := \
     shims/protos/crypto_util.proto \
     json_store.cc \
     active_link_monitor.cc \
-    arp_client.cc \
-    arp_packet.cc \
     async_connection.cc \
     certificate_file.cc \
     connection.cc \
@@ -414,9 +414,6 @@ LOCAL_C_INCLUDES := \
 LOCAL_SRC_FILES := \
     shims/protos/crypto_util.proto \
     active_link_monitor_unittest.cc \
-    arp_client_test_helper.cc \
-    arp_client_unittest.cc \
-    arp_packet_unittest.cc \
     async_connection_unittest.cc \
     certificate_file_unittest.cc \
     connection_diagnostics_unittest.cc \
@@ -465,7 +462,6 @@ LOCAL_SRC_FILES := \
     mock_active_link_monitor.cc \
     mock_adaptors.cc \
     mock_ares.cc \
-    mock_arp_client.cc \
     mock_async_connection.cc \
     mock_certificate_file.cc \
     mock_connection.cc \
@@ -513,10 +509,14 @@ LOCAL_SRC_FILES := \
     mock_store.cc \
     mock_traffic_monitor.cc \
     mock_virtual_device.cc \
+    net/arp_client_test_helper.cc \
+    net/arp_client_unittest.cc \
+    net/arp_packet_unittest.cc \
     net/attribute_list_unittest.cc \
     net/byte_string_unittest.cc \
     net/event_history_unittest.cc \
     net/ip_address_unittest.cc \
+    net/mock_arp_client.cc \
     net/netlink_attribute_unittest.cc \
     net/rtnl_handler_unittest.cc \
     net/rtnl_listener_unittest.cc \
