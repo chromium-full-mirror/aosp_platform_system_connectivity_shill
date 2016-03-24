@@ -79,7 +79,7 @@ shill_cpp_flags := \
 include $(CLEAR_VARS)
 LOCAL_MODULE := libshill-net
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_CPPFLAGS := $(shill_cpp_flags) -Wno-sign-compare
+LOCAL_CPPFLAGS := $(shill_cpp_flags)
 LOCAL_SHARED_LIBRARIES := $(shill_shared_libraries)
 LOCAL_C_INCLUDES := $(shill_c_includes)
 LOCAL_SRC_FILES := \
