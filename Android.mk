@@ -646,7 +646,9 @@ LOCAL_MODULE_TAGS := eng
 endif
 LOCAL_STATIC_LIBRARIES := libgtest_prod
 LOCAL_C_INCLUDES := $(shill_c_includes)
-LOCAL_SRC_FILES := setup_wifi/main.cc
+LOCAL_SRC_FILES := \
+    setup_wifi/dbus_client.cc \
+    setup_wifi/main.cc
 $(eval $(shill_cpp_common))
 include $(BUILD_EXECUTABLE)
 
