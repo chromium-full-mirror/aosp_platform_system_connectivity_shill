@@ -25,7 +25,11 @@
 #include <base/strings/string_number_conversions.h>
 #include <brillo/daemons/daemon.h>
 
+#ifdef ENABLE_BINDER
+#include "shill/setup_wifi/binder_client.h"
+#else  // !ENABLE_BINDER
 #include "shill/setup_wifi/dbus_client.h"
+#endif  // ENABLE_BINDER || !ENABLE_BINDER
 
 namespace {
 static const char kHelp[] = "help";
@@ -77,8 +81,12 @@ int main(int argc, char** argv) {
     }
   }
 
-  std::unique_ptr<brillo::Daemon> client(
-      new setup_wifi::DBusClient(ssid, psk, is_hex_ssid, timeout));
+  std::unique_ptr<brillo::Daemon> client;
+#ifdef ENABLE_BINDER
+  client.reset(new setup_wifi::BinderClient(ssid, psk, is_hex_ssid, timeout));
+#else  // !ENABLE_BINDER
+  client.reset(new setup_wifi::DBusClient(ssid, psk, is_hex_ssid, timeout));
+#endif  // ENABLE_BINDER || !ENABLE_BINDER
   client->Run();
   LOG(INFO) << "Process exiting.";
 
