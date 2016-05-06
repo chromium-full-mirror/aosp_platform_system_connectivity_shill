@@ -62,7 +62,6 @@ shill_parent_dir := $(LOCAL_PATH)/../
 
 shill_c_includes := \
     $(shill_parent_dir) \
-    external/gtest/include/
 
 shill_shared_libraries := \
     libbrillo \
@@ -81,6 +80,7 @@ LOCAL_MODULE := libshill-net
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_CPPFLAGS := $(shill_cpp_flags)
 LOCAL_SHARED_LIBRARIES := $(shill_shared_libraries)
+LOCAL_STATIC_LIBRARIES := libgtest_prod
 LOCAL_C_INCLUDES := $(shill_c_includes)
 LOCAL_SRC_FILES := \
     net/arp_client.cc \
@@ -169,7 +169,8 @@ LOCAL_MODULE_CLASS := STATIC_LIBRARIES
 LOCAL_CPPFLAGS := $(shill_cpp_flags) -Wno-sign-compare
 LOCAL_STATIC_LIBRARIES := \
     supplicant-proxies \
-    dhcpcd-proxies
+    dhcpcd-proxies \
+    libgtest_prod
 LOCAL_SHARED_LIBRARIES := \
     $(shill_shared_libraries) \
     libshill-net \
@@ -378,7 +379,7 @@ ifdef BRILLO
 LOCAL_SHARED_LIBRARIES += libhardware
 LOCAL_REQUIRED_MODULES := $(WIFI_DRIVER_HAL_MODULE)
 endif # BRILLO
-LOCAL_STATIC_LIBRARIES := libshill
+LOCAL_STATIC_LIBRARIES := libshill libgtest_prod
 LOCAL_C_INCLUDES := $(shill_c_includes)
 LOCAL_SRC_FILES := shill_main.cc
 LOCAL_INIT_RC := shill.rc
@@ -640,6 +641,7 @@ LOCAL_SHARED_LIBRARIES := \
 ifdef BRILLO
 LOCAL_MODULE_TAGS := eng
 endif
+LOCAL_STATIC_LIBRARIES := libgtest_prod
 LOCAL_C_INCLUDES := $(shill_c_includes)
 LOCAL_SRC_FILES := setup_wifi/main.cc
 $(eval $(shill_cpp_common))
@@ -661,6 +663,7 @@ LOCAL_C_INCLUDES := \
     $(shill_c_includes) \
     external/cros/system_api/dbus \
     external/xmlrpcpp/src
+LOCAL_STATIC_LIBRARIES := libgtest_prod
 $(eval $(shill_cpp_common))
 LOCAL_SRC_FILES := $(call all-cpp-files-under,test-rpc-proxy)
 include $(BUILD_EXECUTABLE)
