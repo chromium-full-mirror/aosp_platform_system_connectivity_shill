@@ -293,8 +293,11 @@ LOCAL_SRC_FILES += \
     binder/binder_adaptor.cc \
     binder/binder_control.cc \
     binder/device_binder_adaptor.cc \
+    binder/device_binder_service.cc \
     binder/manager_binder_adaptor.cc \
+    binder/manager_binder_service.cc \
     binder/service_binder_adaptor.cc \
+    binder/service_binder_service.cc \
     ipconfig_adaptor_stub.cc \
     profile_adaptor_stub.cc \
     rpc_task_adaptor_stub.cc \
