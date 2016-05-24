@@ -626,31 +626,49 @@ LOCAL_PREBUILT_EXECUTABLES := \
     bin/ff_debug
 include $(BUILD_MULTI_PREBUILT)
 
-# The following  two targets use the shill D-Bus API, which we do not expose
-# if we are using Binder.
-ifneq ($(SHILL_USE_BINDER), true)
-
 # setup_wifi
 # ========================================================
 include $(CLEAR_VARS)
 # The module name can't be the same of a directory in the source code.
 LOCAL_MODULE := shill_setup_wifi
 LOCAL_CPPFLAGS := $(shill_cpp_flags)
+LOCAL_SRC_FILES := setup_wifi/main.cc
+ifeq ($(SHILL_USE_BINDER), true)
 LOCAL_SHARED_LIBRARIES := \
     $(shill_shared_libraries) \
-    libshill-client \
+    libbinder \
+    libbinderwrapper \
+    libbrillo \
+    libbrillo-binder \
+    libutils
+LOCAL_AIDL_INCLUDES := \
+    frameworks/native/aidl/binder \
+    system/connectivity/shill/binder
+LOCAL_SRC_FILES += \
+    binder/android/system/connectivity/shill/IManager.aidl \
+    binder/android/system/connectivity/shill/IService.aidl \
+    setup_wifi/binder_client.cc
+else
+LOCAL_SHARED_LIBRARIES := \
+    $(shill_shared_libraries) \
     libbrillo-dbus \
-    libchrome-dbus
+    libchrome-dbus \
+    libshill-client
+LOCAL_SRC_FILES += setup_wifi/dbus_client.cc
+endif # SHILL_USE_BINDER
 ifdef BRILLO
 LOCAL_MODULE_TAGS := eng
 endif
 LOCAL_STATIC_LIBRARIES := libgtest_prod
-LOCAL_C_INCLUDES := $(shill_c_includes)
-LOCAL_SRC_FILES := \
-    setup_wifi/dbus_client.cc \
-    setup_wifi/main.cc
+LOCAL_C_INCLUDES := \
+    $(shill_c_includes) \
+    external/cros/system_api/
 $(eval $(shill_cpp_common))
 include $(BUILD_EXECUTABLE)
+
+# The following  target uses the shill D-Bus API, which we do not expose
+# if we are using Binder.
+ifneq ($(SHILL_USE_BINDER), true)
 
 # test-rpc-proxy
 # ========================================================
