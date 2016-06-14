@@ -393,7 +393,7 @@ include $(BUILD_EXECUTABLE)
 # ========================================================
 include $(CLEAR_VARS)
 LOCAL_MODULE := shill_test
-LOCAL_MODULE_CLASS := EXECUTABLES
+LOCAL_MODULE_CLASS := NATIVE_TESTS
 ifdef BRILLO
 LOCAL_MODULE_TAGS := eng
 endif # BRILLO
