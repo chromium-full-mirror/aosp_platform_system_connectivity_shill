@@ -53,7 +53,7 @@ class ProxyDbusClient {
   static const char kDbusErrorObjectUnknown[];
   static const int kLogLevel;
 
-  ProxyDbusClient(scoped_refptr<dbus::Bus> bus);
+  explicit ProxyDbusClient(scoped_refptr<dbus::Bus> bus);
   void SetLogging(Technology tech);
   std::vector<std::unique_ptr<DeviceProxy>> GetDeviceProxies();
   std::vector<std::unique_ptr<ServiceProxy>> GetServiceProxies();
