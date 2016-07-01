@@ -32,7 +32,7 @@ class BgscanConfiguration {
   static const int kDefaultSignalThreshold;
   static const char kDefaultScanMethod[];
 
-  BgscanConfiguration(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit BgscanConfiguration(XmlRpc::XmlRpcValue* xml_rpc_value_in);
 
   std::string interface_;
   int signal_threshold_;
@@ -48,7 +48,7 @@ class AssociationParameters {
   static const int kDefaultAssociationTimeoutSeconds;
   static const int kDefaultConfigurationTimeoutSeconds;
 
-  AssociationParameters(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit AssociationParameters(XmlRpc::XmlRpcValue* xml_rpc_value_in);
 
   std::string ssid_;
   int discovery_timeout_seconds_;
@@ -72,7 +72,7 @@ class AssociationParameters {
 // consumers of this interface look up the service by GUID.
 class ConfigureServiceParameters {
  public:
-  ConfigureServiceParameters(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit ConfigureServiceParameters(XmlRpc::XmlRpcValue* xml_rpc_value_in);
 
   std::string guid_;
   std::string passphrase_;

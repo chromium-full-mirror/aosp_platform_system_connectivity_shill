@@ -47,7 +47,7 @@ class SecurityConfig {
   // object from the incoming RPC data.
   static std::unique_ptr<SecurityConfig> CreateSecurityConfigObject(
       XmlRpc::XmlRpcValue* xml_rpc_value_in);
-  SecurityConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit SecurityConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   virtual ~SecurityConfig() = default;
   virtual void GetServiceProperties(brillo::VariantDictionary* properties);
 
@@ -59,7 +59,7 @@ class SecurityConfig {
 // and simply start using the WEP keys after association finishes.
 class WEPConfig : public SecurityConfig {
  public:
-  WEPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit WEPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   virtual void GetServiceProperties(brillo::VariantDictionary* properties) override;
 
  private:
@@ -71,7 +71,7 @@ class WEPConfig : public SecurityConfig {
 // Abstracts security configuration for a WPA encrypted WiFi network.
 class WPAConfig : public SecurityConfig {
  public:
-  WPAConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit WPAConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   void GetServiceProperties(brillo::VariantDictionary* properties) override;
 
   static const int kMaxPskSize;
@@ -94,7 +94,7 @@ class EAPConfig : public SecurityConfig {
   static const char kDefaultEAPIdentity[];
   static int last_tmp_id;
 
-  EAPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit EAPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   void GetServiceProperties(brillo::VariantDictionary* properties) override;
 
  private:
@@ -126,7 +126,7 @@ class DynamicWEPConfig : public EAPConfig {
  public:
   static const int kDefaultKeyPeriod;
 
-  DynamicWEPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit DynamicWEPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   void GetServiceProperties(brillo::VariantDictionary* properties) override;
 
  private:
@@ -137,7 +137,7 @@ class DynamicWEPConfig : public EAPConfig {
 // Security type to set up a WPA connection via EAP-TLS negotiation.
 class WPAEAPConfig : public EAPConfig {
  public:
-  WPAEAPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit WPAEAPConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   void GetServiceProperties(brillo::VariantDictionary* properties) override;
 
  private:
@@ -163,7 +163,7 @@ class Tunneled1xConfig : public WPAEAPConfig {
   static const char kLayer2TypeTTLSMSCHAP[];
   static const char kLayer2TypeTTLSPAP[];
 
-  Tunneled1xConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
+  explicit Tunneled1xConfig(XmlRpc::XmlRpcValue* xml_rpc_value_in);
   void GetServiceProperties(brillo::VariantDictionary* properties) override;
 
  private:

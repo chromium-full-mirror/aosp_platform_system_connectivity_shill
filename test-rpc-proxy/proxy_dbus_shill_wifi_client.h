@@ -24,7 +24,7 @@
 // Client.
 class ProxyDbusShillWifiClient : public ProxyShillWifiClient {
  public:
-  ProxyDbusShillWifiClient(scoped_refptr<dbus::Bus> dbus_bus);
+  explicit ProxyDbusShillWifiClient(scoped_refptr<dbus::Bus> dbus_bus);
   ~ProxyDbusShillWifiClient() override = default;
   bool SetLogging() override;
   bool RemoveAllWifiEntries() override;
