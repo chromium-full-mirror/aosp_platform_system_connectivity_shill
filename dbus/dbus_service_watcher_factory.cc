@@ -33,7 +33,7 @@ DBusServiceWatcherFactory* DBusServiceWatcherFactory::GetInstance() {
 }
 
 ChromeosDBusServiceWatcher* DBusServiceWatcherFactory::CreateDBusServiceWatcher(
-    scoped_refptr<dbus::Bus> bus, const std::string& connection_name,
+    const scoped_refptr<dbus::Bus>& bus, const std::string& connection_name,
     const base::Closure& on_connection_vanish) {
   return new ChromeosDBusServiceWatcher(bus, connection_name,
                                         on_connection_vanish);

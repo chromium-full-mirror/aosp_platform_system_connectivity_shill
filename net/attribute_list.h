@@ -49,7 +49,7 @@ class SHILL_EXPORT AttributeList : public base::RefCounted<AttributeList> {
 
   // Instantiates an NetlinkAttribute of the appropriate type from |id|,
   // and adds it to |attributes_|.
-  bool CreateAttribute(int id, NewFromIdMethod factory);
+  bool CreateAttribute(int id, const NewFromIdMethod& factory);
 
   // Helper function for creating control attribute.
   bool CreateControlAttribute(int id);
@@ -117,7 +117,7 @@ class SHILL_EXPORT AttributeList : public base::RefCounted<AttributeList> {
   bool CreateStringAttribute(int id, const char* id_string);
   // SSID attributes are derived from string attributes.
   bool CreateSsidAttribute(int id, const char* id_string);
-  bool SetStringAttributeValue(int id, std::string value);
+  bool SetStringAttributeValue(int id, const std::string& value);
   bool GetStringAttributeValue(int id, std::string* value) const;
 
   bool CreateNestedAttribute(int id, const char* id_string);
@@ -129,7 +129,7 @@ class SHILL_EXPORT AttributeList : public base::RefCounted<AttributeList> {
   bool CreateRawAttribute(int id, const char* id_string);
   // |value| should point to the data (after the |nlattr| header, if there is
   // one).
-  bool SetRawAttributeValue(int id, ByteString value);
+  bool SetRawAttributeValue(int id, const ByteString& value);
   bool GetRawAttributeValue(int id, ByteString* output) const;
 
   // This retrieves a string from any kind of attribute.

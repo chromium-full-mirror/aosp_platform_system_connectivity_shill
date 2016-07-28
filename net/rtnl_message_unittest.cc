@@ -389,10 +389,10 @@ class RTNLMessageTest : public Test {
                      int interface_index,
                      unsigned int flags,
                      unsigned int change,
-                     ByteString address,
-                     ByteString name,
+                     const ByteString& address,
+                     const ByteString& name,
                      uint32_t mtu,
-                     ByteString qdisc,
+                     const ByteString& qdisc,
                      int oper_state) {
     RTNLMessage msg;
     EXPECT_TRUE(msg.Decode(packet));

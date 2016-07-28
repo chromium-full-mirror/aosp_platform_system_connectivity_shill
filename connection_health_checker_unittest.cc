@@ -256,7 +256,7 @@ class ConnectionHealthCheckerTest : public Test {
   // This only works if GetSocketInfo is called with kProxyFD.
   // If no matching sock_info is provided (Does not belong to proxy socket),
   // GetSocketInfo will (correctly) return false.
-  void ExpectGetSocketInfoReturns(SocketInfo sock_info) {
+  void ExpectGetSocketInfoReturns(const SocketInfo& sock_info) {
     vector<SocketInfo> info_list;
     info_list.push_back(sock_info);
     EXPECT_CALL(*socket_, GetSockName(kProxyFD, _, _))

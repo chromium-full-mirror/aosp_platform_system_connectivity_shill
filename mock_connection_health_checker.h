@@ -35,7 +35,7 @@ class MockConnectionHealthChecker : public ConnectionHealthChecker {
   ~MockConnectionHealthChecker() override;
 
   MOCK_METHOD1(AddRemoteURL, void(const std::string& url_string));
-  MOCK_METHOD1(AddRemoteIP, void(IPAddress ip));
+  MOCK_METHOD1(AddRemoteIP, void(const IPAddress& ip));
   MOCK_METHOD0(Start, void());
   MOCK_METHOD0(Stop, void());
   MOCK_CONST_METHOD0(health_check_in_progress, bool());

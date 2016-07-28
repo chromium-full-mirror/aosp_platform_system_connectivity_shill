@@ -50,7 +50,7 @@ std::vector<std::string> EventHistory::ExtractWallClockToStrings() const {
   return strings;
 }
 
-void EventHistory::RecordEventInternal(Timestamp now) {
+void EventHistory::RecordEventInternal(const Timestamp& now) {
   events_.push_back(now);
   while (!events_.empty() && max_events_specified_ &&
          (events_.size() > static_cast<size_t>(max_events_saved_))) {

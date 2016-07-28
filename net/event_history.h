@@ -82,7 +82,7 @@ class SHILL_EXPORT EventHistory {
   friend class ServiceTest;  // RecordEventInternal, time_
   friend class WakeOnWiFiTest;  // time_
 
-  void RecordEventInternal(Timestamp now);
+  void RecordEventInternal(const Timestamp& now);
 
   void ExpireEventsBeforeInternal(int seconds_ago, Timestamp now,
                                   ClockType clock_type);

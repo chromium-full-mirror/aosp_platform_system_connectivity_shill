@@ -505,7 +505,7 @@ class Manager : public base::SupportsWeakPtr<Manager> {
 
   // Calculate connection identifier, which is hash of salt value, gateway IP
   // address, and gateway MAC address.
-  int CalcConnectionId(std::string gateway_ip, std::string gateway_mac);
+  int CalcConnectionId(const std::string& gateway_ip, const std::string& gateway_mac);
 
   // Report the number of services associated with given connection
   // |connection_id|.
@@ -734,8 +734,8 @@ class Manager : public base::SupportsWeakPtr<Manager> {
   // the resulting configuration to |profile|.  This method is useful
   // when copying a service configuration from one profile to another,
   // or writing a newly created service config to a specific profile.
-  static void SetupServiceInProfile(ServiceRefPtr service,
-                                    ProfileRefPtr profile,
+  static void SetupServiceInProfile(const ServiceRefPtr& service,
+                                    const ProfileRefPtr& profile,
                                     const KeyValueStore& args,
                                     Error* error);
 
@@ -787,7 +787,7 @@ class Manager : public base::SupportsWeakPtr<Manager> {
     power_manager_.reset(power_manager);
   }
 
-  DeviceRefPtr GetDeviceConnectedToService(ServiceRefPtr service);
+  DeviceRefPtr GetDeviceConnectedToService(const ServiceRefPtr& service);
 
   void DeregisterDeviceByLinkName(const std::string& link_name);
 

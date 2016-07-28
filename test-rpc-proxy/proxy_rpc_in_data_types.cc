@@ -23,7 +23,7 @@ static const char kXmlRpcStructTypeKey[] = "xmlrpc_struct_type_key";
 
 void AssertStructTypeStringFromXmlRpcValue(
     XmlRpc::XmlRpcValue* xml_rpc_value_in,
-    std::string expected_type) {
+    const std::string& expected_type) {
   if ((*xml_rpc_value_in)[kXmlRpcStructTypeKey] != expected_type) {
     LOG(FATAL) << "Unexpected object received. Expected: " << expected_type
                << "Recieved: " << (*xml_rpc_value_in)[kXmlRpcStructTypeKey];

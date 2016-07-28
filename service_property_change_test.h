@@ -26,15 +26,15 @@ class ServiceMockAdaptor;
 
 // Test property change notifications that are implemented by all
 // Services.
-void TestCommonPropertyChanges(ServiceRefPtr service,
+void TestCommonPropertyChanges(const ServiceRefPtr& service,
                                ServiceMockAdaptor* adaptor);
 // Test AutoConnect property change notification. Implemented by
 // all Services except EthernetService.
-void TestAutoConnectPropertyChange(ServiceRefPtr service,
+void TestAutoConnectPropertyChange(const ServiceRefPtr& service,
                                    ServiceMockAdaptor* adaptor);
 // Test Name property change notification. Only VPNService allows
 // changing the name property.
-void TestNamePropertyChange(ServiceRefPtr service,
+void TestNamePropertyChange(const ServiceRefPtr& service,
                            ServiceMockAdaptor* adaptor);
 // Test that the common customer setters (for all Services) return
 // false if setting to the same as the current value.

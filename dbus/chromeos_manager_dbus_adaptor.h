@@ -48,7 +48,7 @@ class ChromeosManagerDBusAdaptor
   static const char kPath[];
 
   ChromeosManagerDBusAdaptor(const scoped_refptr<dbus::Bus>& adaptor_bus,
-                             const scoped_refptr<dbus::Bus> proxy_bus,
+                             const scoped_refptr<dbus::Bus>& proxy_bus,
                              Manager* manager);
   ~ChromeosManagerDBusAdaptor() override;
 

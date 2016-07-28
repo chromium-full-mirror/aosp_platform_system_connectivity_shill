@@ -1662,8 +1662,8 @@ void Manager::VerifyAndEncryptCredentials(const string& certificate,
 }
 #endif  // DISABLE_WIFI
 
-int Manager::CalcConnectionId(std::string gateway_ip,
-                              std::string gateway_mac) {
+int Manager::CalcConnectionId(const std::string& gateway_ip,
+                              const std::string& gateway_mac) {
   return static_cast<int>(std::hash<std::string>()(gateway_ip + gateway_mac +
       std::to_string(props_.connection_id_salt)));
 }
@@ -2532,8 +2532,8 @@ ServiceRefPtr Manager::ConfigureServiceForProfile(
   return nullptr;
 }
 
-void Manager::SetupServiceInProfile(ServiceRefPtr service,
-                                    ProfileRefPtr profile,
+void Manager::SetupServiceInProfile(const ServiceRefPtr& service,
+                                    const ProfileRefPtr& profile,
                                     const KeyValueStore& args,
                                     Error* error) {
   service->SetProfile(profile);
@@ -2672,7 +2672,7 @@ void Manager::UpdateProviderMapping() {
 #endif  // DISABLE_WIMAX
 }
 
-DeviceRefPtr Manager::GetDeviceConnectedToService(ServiceRefPtr service) {
+DeviceRefPtr Manager::GetDeviceConnectedToService(const ServiceRefPtr& service) {
   for (DeviceRefPtr device : devices_) {
     if (device->IsConnectedToService(service)) {
       return device;

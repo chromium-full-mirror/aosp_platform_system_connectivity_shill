@@ -243,7 +243,7 @@ class SHILL_EXPORT NetlinkMessageFactory {
 
   // Adds a message factory for a specific message_type.  Intended to be used
   // at initialization.
-  bool AddFactoryMethod(uint16_t message_type, FactoryMethod factory);
+  bool AddFactoryMethod(uint16_t message_type, const FactoryMethod& factory);
 
   // Ownership of the message is passed to the caller and, as such, he should
   // delete it.

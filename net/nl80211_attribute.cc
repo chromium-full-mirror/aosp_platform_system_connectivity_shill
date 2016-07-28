@@ -123,7 +123,7 @@ Nl80211AttributeBss::Nl80211AttributeBss()
 
 bool Nl80211AttributeBss::ParseInformationElements(
     AttributeList* attribute_list, size_t id, const string& attribute_name,
-    ByteString data) {
+    const ByteString& data) {
   if (!attribute_list) {
     LOG(ERROR) << "NULL |attribute_list| parameter";
     return false;

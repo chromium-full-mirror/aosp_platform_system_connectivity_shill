@@ -77,12 +77,12 @@ class ConnectionHealthChecker {
 
   // Name resolution can fail in conditions -(1)- and -(2)-. Add an IP address
   // to attempt the TCP connection with.
-  virtual void AddRemoteIP(IPAddress ip);
+  virtual void AddRemoteIP(const IPAddress& ip);
 
   // Change the associated Connection on the Device.
   // This will restart any ongoing health check. Any ongoing DNS query will be
   // dropped (not restarted).
-  virtual void SetConnection(ConnectionRefPtr connection);
+  virtual void SetConnection(const ConnectionRefPtr& connection);
 
   // Start a connection health check. The health check involves one or more
   // attempts at establishing and using a TCP connection. |result_callback_| is

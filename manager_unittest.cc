@@ -202,9 +202,9 @@ class ManagerTest : public PropertyStoreTest {
     auto devices = manager()->FilterByTechnology(tech);
     return (devices.size() == 1 && devices[0].get() == device.get());
   }
-  bool ServiceOrderIs(ServiceRefPtr svc1, ServiceRefPtr svc2);
+  bool ServiceOrderIs(const ServiceRefPtr& svc1, const ServiceRefPtr& svc2);
 
-  void AdoptProfile(Manager* manager, ProfileRefPtr profile) {
+  void AdoptProfile(Manager* manager, const ProfileRefPtr& profile) {
     manager->profiles_.push_back(profile);
   }
 
@@ -518,7 +518,7 @@ class ManagerTest : public PropertyStoreTest {
 
 const char ManagerTest::TerminationActionTest::kActionName[] = "action";
 
-bool ManagerTest::ServiceOrderIs(ServiceRefPtr svc0, ServiceRefPtr svc1) {
+bool ManagerTest::ServiceOrderIs(const ServiceRefPtr& svc0, const ServiceRefPtr& svc1) {
   if (!manager()->sort_services_task_.IsCancelled()) {
     manager()->SortServicesTask();
   }

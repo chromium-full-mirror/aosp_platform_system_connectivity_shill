@@ -211,11 +211,11 @@ class DeviceTest : public PropertyStoreTest {
     device_->OnIPConfigExpired(ipconfig);
   }
 
-  void SelectService(const ServiceRefPtr service) {
+  void SelectService(const ServiceRefPtr& service) {
     device_->SelectService(service);
   }
 
-  void SetConnection(ConnectionRefPtr connection) {
+  void SetConnection(const ConnectionRefPtr& connection) {
     device_->connection_ = connection;
   }
 
@@ -2666,7 +2666,7 @@ class DeviceByteCountTest : public DeviceTest {
     return true;
   }
 
-  bool ExpectByteCounts(DeviceRefPtr device,
+  bool ExpectByteCounts(const DeviceRefPtr& device,
                         int64_t expected_rx, int64_t expected_tx) {
     int64_t actual_rx = device->GetReceiveByteCount();
     int64_t actual_tx = device->GetTransmitByteCount();
@@ -2675,7 +2675,7 @@ class DeviceByteCountTest : public DeviceTest {
     return expected_rx == actual_rx && expected_tx == actual_tx;
   }
 
-  void ExpectSavedCounts(DeviceRefPtr device,
+  void ExpectSavedCounts(const DeviceRefPtr& device,
                          int64_t expected_rx, int64_t expected_tx) {
     EXPECT_CALL(storage_,
         SetUint64(_, Device::kStorageReceiveByteCount, expected_rx))

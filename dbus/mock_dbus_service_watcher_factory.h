@@ -30,7 +30,7 @@ class MockDBusServiceWatcherFactory : public DBusServiceWatcherFactory {
 
   MOCK_METHOD3(
       CreateDBusServiceWatcher,
-      ChromeosDBusServiceWatcher*(scoped_refptr<dbus::Bus> bus,
+      ChromeosDBusServiceWatcher*(const scoped_refptr<dbus::Bus>& bus,
                                   const std::string& connection_name,
                                   const base::Closure& on_connection_vanish));
 

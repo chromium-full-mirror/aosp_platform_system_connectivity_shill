@@ -581,7 +581,7 @@ class Nl80211AttributeBss : public NetlinkNestedAttribute {
   static bool ParseInformationElements(AttributeList* attribute_list,
                                        size_t id,
                                        const std::string& attribute_name,
-                                       ByteString data);
+                                       const ByteString& data);
 
   DISALLOW_COPY_AND_ASSIGN(Nl80211AttributeBss);
 };

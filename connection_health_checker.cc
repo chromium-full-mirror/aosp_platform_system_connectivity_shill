@@ -127,7 +127,7 @@ bool ConnectionHealthChecker::health_check_in_progress() const {
   return health_check_in_progress_;
 }
 
-void ConnectionHealthChecker::AddRemoteIP(IPAddress ip) {
+void ConnectionHealthChecker::AddRemoteIP(const IPAddress& ip) {
   remote_ips_->AddUnique(ip);
 }
 
@@ -206,7 +206,7 @@ void ConnectionHealthChecker::Stop() {
   num_tx_queue_polling_attempts_ = 0;
 }
 
-void ConnectionHealthChecker::SetConnection(ConnectionRefPtr connection) {
+void ConnectionHealthChecker::SetConnection(const ConnectionRefPtr& connection) {
   SLOG(connection_.get(), 3) << __func__;
   connection_ = connection;
   tcp_connection_.reset(new AsyncConnection(connection_->interface_name(),
