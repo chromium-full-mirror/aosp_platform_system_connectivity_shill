@@ -45,7 +45,7 @@ namespace shill {
 // for specific setters. However, it's convenient to have all the property
 // change notifications documented (and tested) in one place.
 
-void TestCommonPropertyChanges(ServiceRefPtr service,
+void TestCommonPropertyChanges(const ServiceRefPtr& service,
                                ServiceMockAdaptor* adaptor) {
   Error error;
 
@@ -119,7 +119,7 @@ void TestCommonPropertyChanges(ServiceRefPtr service,
   Mock::VerifyAndClearExpectations(adaptor);
 }
 
-void TestAutoConnectPropertyChange(ServiceRefPtr service,
+void TestAutoConnectPropertyChange(const ServiceRefPtr& service,
                                    ServiceMockAdaptor* adaptor) {
   bool auto_connect = service->auto_connect();
   EXPECT_CALL(*adaptor, EmitBoolChanged(kAutoConnectProperty, _));
@@ -127,7 +127,7 @@ void TestAutoConnectPropertyChange(ServiceRefPtr service,
   Mock::VerifyAndClearExpectations(adaptor);
 }
 
-void TestNamePropertyChange(ServiceRefPtr service,
+void TestNamePropertyChange(const ServiceRefPtr& service,
                             ServiceMockAdaptor* adaptor) {
   Error error;
   string name = service->GetNameProperty(&error);
@@ -136,7 +136,7 @@ void TestNamePropertyChange(ServiceRefPtr service,
   Mock::VerifyAndClearExpectations(adaptor);
 }
 
-void TestCustomSetterNoopChange(ServiceRefPtr service,
+void TestCustomSetterNoopChange(const ServiceRefPtr& service,
                                 MockManager* mock_manager) {
   // SetAutoConnectFull
   {

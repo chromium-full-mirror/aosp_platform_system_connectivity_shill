@@ -38,7 +38,7 @@ using std::string;
 namespace shill {
 
 bool AttributeList::CreateAttribute(
-    int id, AttributeList::NewFromIdMethod factory) {
+    int id, const AttributeList::NewFromIdMethod& factory) {
   if (ContainsKey(attributes_, id)) {
     VLOG(7) << "Trying to re-add attribute " << id << ", not overwriting";
     return true;
@@ -300,7 +300,7 @@ bool AttributeList::CreateSsidAttribute(int id, const char* id_string) {
   return true;
 }
 
-bool AttributeList::SetStringAttributeValue(int id, string value) {
+bool AttributeList::SetStringAttributeValue(int id, const string& value) {
   NetlinkAttribute* attribute = GetAttribute(id);
   if (!attribute)
     return false;
@@ -361,7 +361,7 @@ bool AttributeList::GetRawAttributeValue(int id,
   return true;
 }
 
-bool AttributeList::SetRawAttributeValue(int id, ByteString value) {
+bool AttributeList::SetRawAttributeValue(int id, const ByteString& value) {
   NetlinkAttribute* attribute = GetAttribute(id);
   if (!attribute)
     return false;

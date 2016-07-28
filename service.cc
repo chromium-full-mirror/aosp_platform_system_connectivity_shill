@@ -656,7 +656,7 @@ bool Service::Save(StoreInterface* storage) {
 }
 
 void Service::Configure(const KeyValueStore& args, Error* error) {
-  for (const auto it : args.properties()) {
+  for (const auto& it : args.properties()) {
     if (it.second.IsTypeCompatible<bool>()) {
       if (ContainsKey(parameters_ignored_for_configure_, it.first)) {
         SLOG(this, 5) << "Ignoring bool property: " << it.first;
@@ -1061,8 +1061,8 @@ uint16_t Service::SecurityLevel() {
 
 // static
 bool Service::Compare(Manager* manager,
-                      ServiceRefPtr a,
-                      ServiceRefPtr b,
+                      const ServiceRefPtr& a,
+                      const ServiceRefPtr& b,
                       bool compare_connectivity_state,
                       const vector<Technology::Identifier>& tech_order,
                       const char** reason) {

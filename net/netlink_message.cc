@@ -267,7 +267,7 @@ void UnknownMessage::Print(int header_log_level,
 //
 
 bool NetlinkMessageFactory::AddFactoryMethod(uint16_t message_type,
-                                             FactoryMethod factory) {
+                                             const FactoryMethod& factory) {
   if (ContainsKey(factories_, message_type)) {
     LOG(WARNING) << "Message type " << message_type << " already exists.";
     return false;

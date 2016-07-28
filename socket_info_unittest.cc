@@ -57,7 +57,7 @@ TEST_F(SocketInfoTest, CopyConstructor) {
                   20,
                   SocketInfo::kTimerStateRetransmitTimerPending);
 
-  SocketInfo info_copy(info);
+  const SocketInfo& info_copy(info);
   ExpectSocketInfoEqual(info, info_copy);
 }
 
@@ -73,7 +73,7 @@ TEST_F(SocketInfoTest, AssignmentOperator) {
                   20,
                   SocketInfo::kTimerStateRetransmitTimerPending);
 
-  SocketInfo info_copy = info;
+  const SocketInfo& info_copy = info;
   ExpectSocketInfoEqual(info, info_copy);
 }
 

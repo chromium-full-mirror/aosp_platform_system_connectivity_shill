@@ -34,7 +34,7 @@ ServicePropertyChangeNotifier::ServicePropertyChangeNotifier(
 ServicePropertyChangeNotifier::~ServicePropertyChangeNotifier() {}
 
 void ServicePropertyChangeNotifier::AddBoolPropertyObserver(
-    const string& name, BoolAccessor accessor) {
+    const string& name, const BoolAccessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<bool>(
           accessor,
@@ -44,7 +44,7 @@ void ServicePropertyChangeNotifier::AddBoolPropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddUint8PropertyObserver(
-    const string& name, Uint8Accessor accessor) {
+    const string& name, const Uint8Accessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<uint8_t>(
           accessor,
@@ -54,7 +54,7 @@ void ServicePropertyChangeNotifier::AddUint8PropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddUint16PropertyObserver(
-    const string& name, Uint16Accessor accessor) {
+    const string& name, const Uint16Accessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<uint16_t>(
           accessor,
@@ -64,7 +64,7 @@ void ServicePropertyChangeNotifier::AddUint16PropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddUint16sPropertyObserver(
-    const string& name, Uint16sAccessor accessor) {
+    const string& name, const Uint16sAccessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<Uint16s>(
           accessor,
@@ -74,7 +74,7 @@ void ServicePropertyChangeNotifier::AddUint16sPropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddUintPropertyObserver(
-    const string& name, Uint32Accessor accessor) {
+    const string& name, const Uint32Accessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<uint32_t>(
           accessor,
@@ -84,7 +84,7 @@ void ServicePropertyChangeNotifier::AddUintPropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddIntPropertyObserver(
-    const string& name, Int32Accessor accessor) {
+    const string& name, const Int32Accessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<int32_t>(
           accessor,
@@ -94,7 +94,7 @@ void ServicePropertyChangeNotifier::AddIntPropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddRpcIdentifierPropertyObserver(
-    const string& name, RpcIdentifierAccessor accessor) {
+    const string& name, const RpcIdentifierAccessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<string>(
           accessor,
@@ -104,7 +104,7 @@ void ServicePropertyChangeNotifier::AddRpcIdentifierPropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddStringPropertyObserver(
-    const string& name, StringAccessor accessor) {
+    const string& name, const StringAccessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<string>(
           accessor,
@@ -114,7 +114,7 @@ void ServicePropertyChangeNotifier::AddStringPropertyObserver(
 }
 
 void ServicePropertyChangeNotifier::AddStringmapPropertyObserver(
-    const string& name, StringmapAccessor accessor) {
+    const string& name, const StringmapAccessor& accessor) {
   property_observers_.emplace_back(
       new PropertyObserver<Stringmap>(
           accessor,

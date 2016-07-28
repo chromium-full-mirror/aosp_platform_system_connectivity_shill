@@ -61,18 +61,18 @@ class EventHistoryTest : public ::testing::Test {
 
   deque<Timestamp>* GetEvents() { return &event_history_->events_; }
 
-  void RecordEvent(Timestamp now) {
+  void RecordEvent(const Timestamp& now) {
     EXPECT_CALL(time_, GetNow()).WillOnce(Return(now));
     event_history_->RecordEvent();
   }
 
-  void ExpireEventsBefore(int seconds_ago, Timestamp now,
+  void ExpireEventsBefore(int seconds_ago, const Timestamp& now,
                           EventHistory::ClockType clock_type) {
     EXPECT_CALL(time_, GetNow()).WillOnce(Return(now));
     event_history_->ExpireEventsBefore(seconds_ago, clock_type);
   }
 
-  void RecordEventAndExpireEventsBefore(int seconds_ago, Timestamp now,
+  void RecordEventAndExpireEventsBefore(int seconds_ago, const Timestamp& now,
                                         EventHistory::ClockType clock_type) {
     EXPECT_CALL(time_, GetNow()).WillOnce(Return(now));
     event_history_->RecordEventAndExpireEventsBefore(seconds_ago, clock_type);
@@ -91,7 +91,7 @@ class EventHistoryTest : public ::testing::Test {
 
   int CountEventsWithinInterval(int seconds_ago,
                                 EventHistory::ClockType clock_type,
-                                Timestamp now) {
+                                const Timestamp& now) {
     EXPECT_CALL(time_, GetNow()).WillOnce(Return(now));
     return event_history_->CountEventsWithinInterval(seconds_ago, clock_type);
   }

@@ -38,7 +38,7 @@ class ServiceSorter {
       : manager_(manager),
         compare_connectivity_state_(compare_connectivity_state),
         technology_order_(tech_order) {}
-  bool operator() (ServiceRefPtr a, ServiceRefPtr b) {
+  bool operator() (const ServiceRefPtr& a, const ServiceRefPtr& b) {
     const char* reason;
     return Service::Compare(manager_, a, b, compare_connectivity_state_,
                             technology_order_, &reason);

@@ -68,7 +68,7 @@ class VPNProvider : public ProviderInterface {
   // Clean up a VPN services that has been unloaded and will be deregistered.
   // This removes the VPN provider's reference to this service in its
   // services_ vector.
-  void RemoveService(VPNServiceRefPtr service);
+  void RemoveService(const VPNServiceRefPtr& service);
 
   // Returns true if any of the managed VPN services is connecting or connected.
   virtual bool HasActiveService() const;

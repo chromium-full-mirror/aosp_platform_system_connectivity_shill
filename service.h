@@ -448,8 +448,8 @@ class Service : public base::RefCounted<Service> {
   // difference.  |reason| is populated with the exact criteria used for the
   // ultimate comparison.
   static bool Compare(Manager* manager,
-                      ServiceRefPtr a,
-                      ServiceRefPtr b,
+                      const ServiceRefPtr& a,
+                      const ServiceRefPtr& b,
                       bool compare_connectivity_state,
                       const std::vector<Technology::Identifier>& tech_order,
                       const char** reason);
@@ -686,9 +686,9 @@ class Service : public base::RefCounted<Service> {
   friend class WiFiServiceTest;
   friend class WiMaxProviderTest;
   friend class WiMaxServiceTest;
-  friend void TestCommonPropertyChanges(ServiceRefPtr, ServiceMockAdaptor*);
-  friend void TestCustomSetterNoopChange(ServiceRefPtr, MockManager*);
-  friend void TestNamePropertyChange(ServiceRefPtr, ServiceMockAdaptor*);
+  friend void TestCommonPropertyChanges(const ServiceRefPtr&, ServiceMockAdaptor*);
+  friend void TestCustomSetterNoopChange(const ServiceRefPtr&, MockManager*);
+  friend void TestNamePropertyChange(const ServiceRefPtr&, ServiceMockAdaptor*);
   FRIEND_TEST(AllMockServiceTest, AutoConnectWithFailures);
   FRIEND_TEST(CellularCapabilityGSMTest, SetStorageIdentifier);
   FRIEND_TEST(CellularServiceTest, IsAutoConnectable);

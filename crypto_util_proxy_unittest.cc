@@ -105,7 +105,7 @@ class CryptoUtilProxyTest : public testing::Test {
   pid_t HandleStartInMinijailWithPipes(
       const tracked_objects::Location& /* spawn_source */,
       const base::FilePath& /* program */,
-      vector<string> /* program_args */,
+      const vector<string>& /* program_args */,
       const std::string& /* run_as_user */,
       const std::string& /* run_as_group */,
       uint64_t /* capabilities_mask */,

@@ -75,7 +75,7 @@ TEST_F(ConnectionInfoTest, CopyConstructor) {
                                 ByteString(kIPAddress4, sizeof(kIPAddress4))),
                       kPort4);
 
-  ConnectionInfo info_copy(info);
+  const ConnectionInfo& info_copy(info);
   ExpectConnectionInfoEqual(info, info_copy);
 }
 
@@ -96,7 +96,7 @@ TEST_F(ConnectionInfoTest, AssignmentOperator) {
                                 ByteString(kIPAddress4, sizeof(kIPAddress4))),
                       kPort4);
 
-  ConnectionInfo info_copy = info;
+  const ConnectionInfo& info_copy = info;
   ExpectConnectionInfoEqual(info, info_copy);
 }
 

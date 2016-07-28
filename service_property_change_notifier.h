@@ -42,23 +42,23 @@ class ServicePropertyChangeNotifier {
   virtual ~ServicePropertyChangeNotifier();
 
   virtual void AddBoolPropertyObserver(const std::string& name,
-                                       BoolAccessor accessor);
+                                       const BoolAccessor& accessor);
   virtual void AddUint8PropertyObserver(const std::string& name,
-                                        Uint8Accessor accessor);
+                                        const Uint8Accessor& accessor);
   virtual void AddUint16PropertyObserver(const std::string& name,
-                                         Uint16Accessor accessor);
+                                         const Uint16Accessor& accessor);
   virtual void AddUint16sPropertyObserver(const std::string& name,
-                                          Uint16sAccessor accessor);
+                                          const Uint16sAccessor& accessor);
   virtual void AddUintPropertyObserver(const std::string& name,
-                                       Uint32Accessor accessor);
+                                       const Uint32Accessor& accessor);
   virtual void AddIntPropertyObserver(const std::string& name,
-                                      Int32Accessor accessor);
+                                      const Int32Accessor& accessor);
   virtual void AddRpcIdentifierPropertyObserver(const std::string& name,
-                                                RpcIdentifierAccessor accessor);
+                                                const RpcIdentifierAccessor& accessor);
   virtual void AddStringPropertyObserver(const std::string& name,
-                                         StringAccessor accessor);
+                                         const StringAccessor& accessor);
   virtual void AddStringmapPropertyObserver(const std::string& name,
-                                            StringmapAccessor accessor);
+                                            const StringmapAccessor& accessor);
   virtual void UpdatePropertyObservers();
 
  private:

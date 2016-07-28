@@ -36,7 +36,7 @@ class DBusServiceWatcherFactory {
   static DBusServiceWatcherFactory* GetInstance();
 
   virtual ChromeosDBusServiceWatcher* CreateDBusServiceWatcher(
-      scoped_refptr<dbus::Bus> bus, const std::string& connection_name,
+      const scoped_refptr<dbus::Bus>& bus, const std::string& connection_name,
       const base::Closure& on_connection_vanish);
 
  protected:

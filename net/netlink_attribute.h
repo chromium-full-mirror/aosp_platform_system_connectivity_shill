@@ -90,7 +90,7 @@ class SHILL_EXPORT NetlinkAttribute {
   virtual bool SetFlagValue(bool value);
 
   virtual bool GetStringValue(std::string* value) const;
-  virtual bool SetStringValue(const std::string value);
+  virtual bool SetStringValue(const std::string& value);
 
   virtual bool GetNestedAttributeList(AttributeListRefPtr* value);
   virtual bool ConstGetNestedAttributeList(
@@ -98,7 +98,7 @@ class SHILL_EXPORT NetlinkAttribute {
   virtual bool SetNestedHasAValue();
 
   virtual bool GetRawValue(ByteString* value) const;
-  virtual bool SetRawValue(const ByteString value);
+  virtual bool SetRawValue(const ByteString& value);
 
   // Prints the attribute info -- for debugging.
   virtual void Print(int log_level, int indent) const;
@@ -243,7 +243,7 @@ class SHILL_EXPORT NetlinkStringAttribute : public NetlinkAttribute {
       : NetlinkAttribute(id, id_string, kType, kMyTypeString) {}
   virtual bool InitFromValue(const ByteString& data);
   virtual bool GetStringValue(std::string* value) const;
-  virtual bool SetStringValue(const std::string new_value);
+  virtual bool SetStringValue(const std::string& new_value);
   virtual bool ToString(std::string* value) const;
   virtual ByteString Encode() const;
   std::string value() const { return value_; }
@@ -292,7 +292,7 @@ class NetlinkNestedAttribute : public NetlinkAttribute {
   struct NestedData {
     typedef base::Callback<bool (AttributeList* list, size_t id,
                                  const std::string& attribute_name,
-                                 ByteString data)> AttributeParser;
+                                 const ByteString& data)> AttributeParser;
     typedef std::map<size_t, NestedData> NestedDataMap;
 
     NestedData();
@@ -369,7 +369,7 @@ class NetlinkRawAttribute : public NetlinkAttribute {
   // Gets the value of the data (the header is not stored).
   virtual bool GetRawValue(ByteString* value) const;
   // Should set the value of the data (not the attribute header).
-  virtual bool SetRawValue(const ByteString value);
+  virtual bool SetRawValue(const ByteString& value);
   virtual bool ToString(std::string* value) const;
   virtual ByteString Encode() const;
 

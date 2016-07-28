@@ -181,7 +181,7 @@ bool VPNProvider::OnDeviceInfoAvailable(const string& link_name,
   return false;
 }
 
-void VPNProvider::RemoveService(VPNServiceRefPtr service) {
+void VPNProvider::RemoveService(const VPNServiceRefPtr& service) {
   const auto it = std::find(services_.begin(), services_.end(), service);
   if (it != services_.end()) {
     services_.erase(it);

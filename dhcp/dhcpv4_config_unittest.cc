@@ -93,7 +93,7 @@ class DHCPv4ConfigTest : public PropertyStoreTest {
     config_->process_manager_ = &process_manager_;
   }
 
-  bool StartInstance(DHCPv4ConfigRefPtr config) {
+  bool StartInstance(const DHCPv4ConfigRefPtr& config) {
     return config->Start();
   }
 
@@ -109,7 +109,7 @@ class DHCPv4ConfigTest : public PropertyStoreTest {
                                          const string& vendorclass,
                                          const string& lease_suffix,
                                          bool arp_gateway);
-  void StopRunningConfigAndExpect(DHCPv4ConfigRefPtr config,
+  void StopRunningConfigAndExpect(const DHCPv4ConfigRefPtr& config,
                                   bool lease_file_exists);
 
  protected:
@@ -222,7 +222,7 @@ DHCPv4ConfigRefPtr DHCPv4ConfigTest::CreateRunningConfig(
   return config;
 }
 
-void DHCPv4ConfigTest::StopRunningConfigAndExpect(DHCPv4ConfigRefPtr config,
+void DHCPv4ConfigTest::StopRunningConfigAndExpect(const DHCPv4ConfigRefPtr& config,
                                                   bool lease_file_exists) {
   ScopedMockLog log;
   // We use a non-zero exit status so that we get the log message.

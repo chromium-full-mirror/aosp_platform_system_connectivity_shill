@@ -123,7 +123,7 @@ class ConnectionTest : public Test {
     connection_ = nullptr;
   }
 
-  void ReplaceSingletons(ConnectionRefPtr connection) {
+  void ReplaceSingletons(const ConnectionRefPtr& connection) {
 #if !defined(__ANDROID__)
     connection->resolver_ = &resolver_;
 #else
@@ -141,21 +141,21 @@ class ConnectionTest : public Test {
     ip6config_->UpdateProperties(ipv6_properties_, true);
   }
 
-  bool PinHostRoute(ConnectionRefPtr connection,
-                    const IPAddress trusted_ip,
-                    const IPAddress gateway) {
+  bool PinHostRoute(const ConnectionRefPtr& connection,
+                    const IPAddress& trusted_ip,
+                    const IPAddress& gateway) {
     return connection->PinHostRoute(trusted_ip, gateway);
   }
 
-  const IPAddress& GetLocalAddress(ConnectionRefPtr connection) {
+  const IPAddress& GetLocalAddress(const ConnectionRefPtr& connection) {
     return connection->local_;
   }
 
-  const IPAddress& GetGatewayAddress(ConnectionRefPtr connection) {
+  const IPAddress& GetGatewayAddress(const ConnectionRefPtr& connection) {
     return connection->gateway_;
   }
 
-  bool GetHasBroadcastDomain(ConnectionRefPtr connection) {
+  bool GetHasBroadcastDomain(const ConnectionRefPtr& connection) {
     return connection->has_broadcast_domain_;
   }
 
