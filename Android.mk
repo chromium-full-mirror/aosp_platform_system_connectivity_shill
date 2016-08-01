@@ -394,9 +394,6 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_MODULE := shill_test
 LOCAL_MODULE_CLASS := NATIVE_TESTS
-ifdef BRILLO
-LOCAL_MODULE_TAGS := eng
-endif # BRILLO
 LOCAL_CPPFLAGS := $(shill_cpp_flags) -Wno-sign-compare -Wno-return-stack-address
 LOCAL_SHARED_LIBRARIES := \
     $(shill_shared_libraries) \
@@ -656,9 +653,6 @@ LOCAL_SHARED_LIBRARIES := \
     libshill-client
 LOCAL_SRC_FILES += setup_wifi/dbus_client.cc
 endif # SHILL_USE_BINDER
-ifdef BRILLO
-LOCAL_MODULE_TAGS := eng
-endif
 LOCAL_STATIC_LIBRARIES := libgtest_prod
 LOCAL_C_INCLUDES := \
     $(shill_c_includes) \
