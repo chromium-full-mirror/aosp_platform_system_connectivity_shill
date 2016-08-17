@@ -79,7 +79,7 @@ XmlRpc::XmlRpcValue PopProfile(
 }
 
 XmlRpc::XmlRpcValue CleanProfiles(
-    XmlRpc::XmlRpcValue params_in,
+    XmlRpc::XmlRpcValue params_in,   // NOLINT(pass-by-value)
     ProxyShillWifiClient* shill_wifi_client) {
   if (!ValidateNumOfElements(params_in, 0)) {
     return false;
@@ -186,7 +186,7 @@ XmlRpc::XmlRpcValue DeleteEntriesForSsid(
 }
 
 XmlRpc::XmlRpcValue InitTestNetworkState(
-    XmlRpc::XmlRpcValue params_in,
+    XmlRpc::XmlRpcValue params_in,   // NOLINT(pass-by-value)
     ProxyShillWifiClient* shill_wifi_client) {
   if (!ValidateNumOfElements(params_in, 0)) {
     return false;
@@ -203,7 +203,7 @@ XmlRpc::XmlRpcValue InitTestNetworkState(
 }
 
 XmlRpc::XmlRpcValue ListControlledWifiInterfaces(
-    XmlRpc::XmlRpcValue params_in,
+    XmlRpc::XmlRpcValue params_in,   // NOLINT(pass-by-value)
     ProxyShillWifiClient* shill_wifi_client) {
   if (!ValidateNumOfElements(params_in, 0)) {
     return false;
@@ -257,7 +257,7 @@ XmlRpc::XmlRpcValue WaitForServiceStates(
 }
 
 XmlRpc::XmlRpcValue GetServiceOrder(
-    XmlRpc::XmlRpcValue params_in,
+    XmlRpc::XmlRpcValue params_in,   // NOLINT(pass-by-value)
     ProxyShillWifiClient* shill_wifi_client) {
   if (!ValidateNumOfElements(params_in, 0)) {
     return false;
@@ -296,7 +296,7 @@ XmlRpc::XmlRpcValue GetServiceProperties(
 }
 
 XmlRpc::XmlRpcValue GetActiveWifiSsids(
-    XmlRpc::XmlRpcValue params_in,
+    XmlRpc::XmlRpcValue params_in,   // NOLINT(pass-by-value)
     ProxyShillWifiClient* shill_wifi_client) {
   if (!ValidateNumOfElements(params_in, 0)) {
     return false;
@@ -467,7 +467,7 @@ XmlRpc::XmlRpcValue SyncTimeTo(
 
 // Dummy method to be used for rpc methods not implemented yet.
 XmlRpc::XmlRpcValue NotImplementedRpcMethod(
-    XmlRpc::XmlRpcValue params_in,
+    XmlRpc::XmlRpcValue params_in,   // NOLINT(pass-by-value)
     ProxyShillWifiClient* shill_wifi_client) {
   LOG(ERROR) << "RPC Method not implemented.";
   return true;
