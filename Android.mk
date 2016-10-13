@@ -229,7 +229,6 @@ LOCAL_SRC_FILES := \
     file_reader.cc \
     geolocation_info.cc \
     hook_table.cc \
-    http_proxy.cc \
     http_request.cc \
     http_url.cc \
     icmp.cc \
@@ -451,7 +450,6 @@ LOCAL_SRC_FILES := \
     fake_store.cc \
     file_reader_unittest.cc \
     hook_table_unittest.cc \
-    http_proxy_unittest.cc \
     http_request_unittest.cc \
     http_url_unittest.cc \
     icmp_unittest.cc \
