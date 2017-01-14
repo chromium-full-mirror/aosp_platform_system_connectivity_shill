@@ -178,7 +178,10 @@ Manager::Manager(ControlInterface* control_interface,
       health_checker_remote_ips_(new IPAddressStore()),
       suppress_autoconnect_(false),
       is_connected_state_(false),
-      dhcp_properties_(new DhcpProperties()) {
+      dhcp_properties_(new DhcpProperties()),
+      network_throttling_enabled_(false),
+      download_rate_kbits_(0),
+      upload_rate_kbits_(0) {
   HelpRegisterDerivedString(kActiveProfileProperty,
                             &Manager::GetActiveProfileRpcIdentifier,
                             nullptr);
@@ -2736,7 +2739,7 @@ bool Manager::SetNetworkThrottlingStatus(const ResultCallback& callback,
 
   if (enabled) {
     upload_rate_kbits_ = upload_rate_kbits;
-    download_rate_kbits_ = upload_rate_kbits;
+    download_rate_kbits_ = download_rate_kbits;
 
     LOG(INFO) << "Asked for upload rate (kbits/s) : " << upload_rate_kbits_
               << " download rate (kbits/s) : " << download_rate_kbits_;
