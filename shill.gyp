@@ -183,6 +183,9 @@
         '-Wno-unused-variable',
         '-Wno-unused-function',
       ],
+      'defines': [
+        'SLOG_MEANS_VLOG=1',
+      ],
       'sources': [
         'net/arp_client.cc',
         'net/arp_packet.cc',
