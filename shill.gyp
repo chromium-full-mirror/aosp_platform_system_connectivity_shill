@@ -596,6 +596,11 @@
       'target_name': 'shill',
       'type': 'executable',
       'dependencies': ['libshill'],
+      'variables': {
+        'deps': [
+          'libminijail',
+        ],
+      },
       'sources': [
         'shill_main.cc',
       ]
@@ -694,6 +699,7 @@
               'libchrome-test-<(libbase_ver)',
               'libnetfilter_queue',
               'libnfnetlink',
+              'libminijail',
             ],
           },
           'defines': [
