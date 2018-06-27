@@ -685,6 +685,21 @@
         },
       ],
     }],
+    ['USE_fuzzer == 1', {
+      'targets': [
+        {
+          'target_name': 'rtnl_handler_fuzzer',
+          'type': 'executable',
+          'dependencies': [
+            'libshill',
+          ],
+          'includes': ['../../../../platform2/common-mk/common_fuzzer.gypi'],
+          'sources': [
+            'net/rtnl_handler_fuzzer.cc',
+          ],
+        },
+      ],
+    }],
     ['USE_test == 1', {
       'targets': [
         {
