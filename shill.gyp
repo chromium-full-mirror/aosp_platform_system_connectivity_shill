@@ -163,20 +163,6 @@
       'includes': ['../../../../platform2/common-mk/protoc.gypi'],
     },
     {
-      'target_name': 'crypto_util',
-      'type': 'executable',
-      'dependencies': ['shim-protos'],
-      'variables': {
-        'deps': [
-          'openssl',
-          'protobuf-lite',
-        ]
-      },
-      'sources': [
-        'shims/crypto_util.cc',
-      ],
-    },
-    {
       'target_name': 'libshill-net-<(libbase_ver)',
       'type': 'shared_library',
       'cflags_cc': [
