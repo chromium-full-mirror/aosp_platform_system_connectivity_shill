@@ -61,10 +61,7 @@ if [ ! -f /home/chronos/.oobe_completed ]; then
   ARGS="${ARGS} --portal-list="
 fi
 
-if [ -e /var/lib/shill/shill_sandboxing_disabled ]; then
-  /usr/bin/metrics_client -e Network.Shill.SandboxingEnabled 0 3 &
-  exec /usr/bin/shill ${ARGS}
-else
+if [ -e /var/lib/shill/shill_sandboxing_enabled ]; then
   /usr/bin/metrics_client -e Network.Shill.SandboxingEnabled 1 3 &
   ARGS="${ARGS} --jail-vpn-clients"
   # Run shill as shill user/group in a minijail:
@@ -77,4 +74,7 @@ else
   #   --ambient so child processes can inherit runtime capabilities:
   exec /sbin/minijail0 -u shill -g shill -G -n -B 20 -c 800003de0 --ambient \
        -- /usr/bin/shill ${ARGS}
+else
+  /usr/bin/metrics_client -e Network.Shill.SandboxingEnabled 0 3 &
+  exec /usr/bin/shill ${ARGS}
 fi
